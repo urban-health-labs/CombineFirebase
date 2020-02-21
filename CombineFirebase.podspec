@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '13.0'
   s.osx.deployment_target = '10.15'
-  s.watchos.deployment_target = '6.0j'
+  s.watchos.deployment_target = '6.0'
   s.tvos.deployment_target = '13.0'
 
   s.static_framework = true
@@ -40,7 +40,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Firestore' do |firestore|
     firestore.dependency 'CombineFirebaseFirestore'
-    firestore.source_files = "Sources/Firestore.swift"
+    firestore.source_files = "Sources/Core/Firestore.swift"
   end
 
 end

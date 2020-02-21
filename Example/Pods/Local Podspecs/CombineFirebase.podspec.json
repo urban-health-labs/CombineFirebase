@@ -1,9 +1,9 @@
 {
   "name": "CombineFirebase",
   "version": "0.1.0",
-  "summary": "A short description of CombineFirebase.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/kshivang/CombineFirebase",
+  "summary": "Combine extensions for Firebase",
+  "description": "Combine extensions for Firebase\nIncluding for now Firestore",
+  "homepage": "https://github.com/rever-ai/CombineFirebase",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,11 +12,27 @@
     "kshivang": "shivang.iitk@gmail.com"
   },
   "source": {
-    "git": "https://github.com/kshivang/CombineFirebase.git",
+    "git": "https://github.com/rever-ai/CombineFirebase.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "8.0"
+    "ios": "13.0",
+    "osx": "10.15",
+    "watchos": "6.0j",
+    "tvos": "13.0"
   },
-  "source_files": "CombineFirebase/Classes/**/*"
+  "static_framework": true,
+  "swift_versions": "5.1",
+  "subspecs": [
+    {
+      "name": "Firestore",
+      "dependencies": {
+        "CombineFirebaseFirestore": [
+
+        ]
+      },
+      "source_files": "Sources/Firestore.swift"
+    }
+  ],
+  "swift_version": "5.1"
 }
