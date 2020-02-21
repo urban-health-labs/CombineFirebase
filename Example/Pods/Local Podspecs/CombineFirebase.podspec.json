@@ -1,0 +1,22 @@
+{
+  "name": "CombineFirebase",
+  "version": "0.1.0",
+  "summary": "A short description of CombineFirebase.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/kshivang/CombineFirebase",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "kshivang": "shivang.iitk@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/kshivang/CombineFirebase.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "CombineFirebase/Classes/**/*"
+}

@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'CombineFirebase'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of CombineFirebase.'
+  s.summary          = 'Combine extensions for Firebase'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,25 +18,29 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  Combine extensions for Firebase
+  Including for now Firestore
                        DESC
 
-  s.homepage         = 'https://github.com/kshivang/CombineFirebase'
+  s.homepage         = 'https://github.com/rever-ai/CombineFirebase'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'kshivang' => 'shivang.iitk@gmail.com' }
-  s.source           = { :git => 'https://github.com/kshivang/CombineFirebase.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/rever-ai/CombineFirebase.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '13.0'
+  s.osx.deployment_target = '10.15'
+  s.watchos.deployment_target = '6.0j'
+  s.tvos.deployment_target = '13.0'
 
-  s.source_files = 'CombineFirebase/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'CombineFirebase' => ['CombineFirebase/Assets/*.png']
-  # }
+  s.static_framework = true
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.swift_version = '5.1'
+
+  s.subspec 'Firestore' do |firestore|
+    firestore.dependency 'CombineFirebaseFirestore'
+    firestore.source_files = "Sources/Firestore.swift"
+  end
+
 end
