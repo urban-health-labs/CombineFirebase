@@ -1,11 +1,13 @@
 use_frameworks!
+platform :ios, '13.0'
 
 target 'CombineFirebase_Example' do
   pod 'CombineFirebase/Firestore', :path => '../'
 
+  pod 'CombineFirebaseFirestore', :path => '../'
+
   target 'CombineFirebase_Tests' do
     inherit! :search_paths
-
     
   end
 end

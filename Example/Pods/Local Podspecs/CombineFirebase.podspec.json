@@ -18,7 +18,7 @@
   "platforms": {
     "ios": "13.0",
     "osx": "10.15",
-    "watchos": "6.0j",
+    "watchos": "6.0",
     "tvos": "13.0"
   },
   "static_framework": true,
@@ -28,10 +28,10 @@
       "name": "Firestore",
       "dependencies": {
         "CombineFirebaseFirestore": [
-
+          "~> 0.1"
         ]
       },
-      "source_files": "Sources/Firestore.swift"
+      "source_files": "Sources/Core/Firestore.swift"
     }
   ],
   "swift_version": "5.1"

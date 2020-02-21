@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   s.swift_version = '5.1'
 
   s.subspec 'Firestore' do |firestore|
-    firestore.dependency 'CombineFirebaseFirestore'
+    firestore.dependency 'CombineFirebaseFirestore', '~> 0.1'
     firestore.source_files = "Sources/Core/Firestore.swift"
   end
 
