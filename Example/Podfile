@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CombineFirebase_Example' do
+  pod 'CombineFirebase', :path => '../'
+
+  target 'CombineFirebase_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
