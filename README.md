@@ -1,6 +1,6 @@
 # CombineFirebase
 
-[![CI Status](https://img.shields.io/travis/kshivang/CombineFirebase.svg?style=flat)](https://travis-ci.org/kshivang/CombineFirebase)
+[![CI Status](https://img.shields.io/travis/kshivang/CombineFirebase.svg?style=flat)](https://travis-ci.org/rever-ai/CombineFirebase)
 [![Version](https://img.shields.io/cocoapods/v/CombineFirebase.svg?style=flat)](https://cocoapods.org/pods/CombineFirebase)
 [![License](https://img.shields.io/cocoapods/l/CombineFirebase.svg?style=flat)](https://cocoapods.org/pods/CombineFirebase)
 [![Platform](https://img.shields.io/cocoapods/p/CombineFirebase.svg?style=flat)](https://cocoapods.org/pods/CombineFirebase)
@@ -22,7 +22,7 @@ pod 'CombineFirebase'
 
 ## Author
 
-kshivang, shivang.iitk@gmail.com
+Kumar Shivang, shivang.iitk@gmail.com
 
 ## License
 
