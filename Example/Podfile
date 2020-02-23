@@ -2,9 +2,19 @@ use_frameworks!
 platform :ios, '13.0'
 
 target 'CombineFirebase_Example' do
+  pod 'CombineFirebase/Storage', :path => '../'
   pod 'CombineFirebase/Firestore', :path => '../'
+  pod 'CombineFirebase/RemoteConfig', :path => '../'
+  pod 'CombineFirebase/Database', :path => '../'
+  pod 'CombineFirebase/Functions', :path => '../'
+  pod 'CombineFirebase/Auth', :path => '../'
 
+  pod 'CombineFirebaseStorage', :path => '../'
   pod 'CombineFirebaseFirestore', :path => '../'
+  pod 'CombineFirebaseRemoteConfig', :path => '../'
+  pod 'CombineFirebaseDatabase', :path => '../'
+  pod 'CombineFirebaseFunctions', :path => '../'
+  pod 'CombineFirebaseAuthentication', :path => '../'
 
   target 'CombineFirebase_Tests' do
     inherit! :search_paths

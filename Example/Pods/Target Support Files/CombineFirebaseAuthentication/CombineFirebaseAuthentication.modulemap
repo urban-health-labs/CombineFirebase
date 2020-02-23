@@ -1,0 +1,6 @@
+framework module CombineFirebaseAuthentication {
+  umbrella header "CombineFirebaseAuthentication-umbrella.h"
+
+  export *
+  module * { export * }
+}

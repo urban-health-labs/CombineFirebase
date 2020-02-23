@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'CombineFirebase'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Combine extensions for Firebase'
 
 # This description is used to generate tags and improve search results.
@@ -37,8 +37,37 @@ Pod::Spec.new do |s|
   s.swift_version = '5.1'
 
   s.subspec 'Firestore' do |firestore|
-    firestore.dependency 'CombineFirebaseFirestore', '~> 0.1'
+    firestore.dependency 'CombineFirebaseFirestore', '~> 0.2'
     firestore.source_files = "Sources/Core/Firestore.swift"
+  end
+
+  s.subspec 'RemoteConfig' do |remote|
+    remote.dependency 'CombineFirebaseRemoteConfig', '~> 0.2'
+    remote.source_files = "Sources/Core/RemoteConfig.swift"
+  end
+
+  
+  s.subspec 'Database' do |database|
+    database.dependency 'CombineFirebaseDatabase', '~> 0.2'
+    database.source_files = "Sources/Core/Database.swift"
+  end
+  
+  
+  s.subspec 'Storage' do |storage|
+    storage.dependency 'CombineFirebaseStorage', '~> 0.2'
+    storage.source_files = "Sources/Core/Storage.swift"
+  end
+
+
+  s.subspec 'Functions' do |functions|
+    functions.dependency 'CombineFirebaseFunctions', '~> 0.2'
+    functions.source_files = "Sources/Core/Functions.swift"
+  end
+
+
+  s.subspec 'Auth' do |auth|
+    auth.dependency 'CombineFirebaseAuthentication', '~> 0.2'
+    auth.source_files = "Sources/Core/Auth.swift"
   end
 
 end

@@ -1,6 +1,6 @@
 //
 //  FirebaseExtension.swift
-//  UrbanYogi_2
+//  CombineFirestore
 //
 //  Created by Kumar Shivang on 20/02/20.
 //  Copyright © 2020 Kumar Shivang. All rights reserved.
@@ -13,8 +13,8 @@ extension Query {
     
     struct Publisher: Combine.Publisher {
     
-        typealias Output = QuerySnapshot?
-        typealias Failure = Never
+        typealias Output = QuerySnapshot
+        typealias Failure = Error
     
         private let query: Query
         private let includeMetadataChanges: Bool
@@ -31,8 +31,9 @@ extension Query {
     
     }
     
-    func publisher(includeMetadataChanges: Bool = true) -> AnyPublisher<QuerySnapshot?, Never> {
-        Publisher(self, includeMetadataChanges: includeMetadataChanges).eraseToAnyPublisher()
+    func publisher(includeMetadataChanges: Bool = true) -> AnyPublisher<QuerySnapshot, Error> {
+        Publisher(self, includeMetadataChanges: includeMetadataChanges)
+            .eraseToAnyPublisher()
     }
     
     func future(source: FirestoreSource = .default) -> AnyPublisher<QuerySnapshot, Error> {
@@ -43,7 +44,7 @@ extension Query {
                 } else if let snapshot = snapshot {
                     promise(.success(snapshot))
                 } else {
-                    promise(.failure(FirebaseError.nilResultError))
+                    promise(.failure(FirestoreError.nilResultError))
                 }
             })
         }.eraseToAnyPublisher()
@@ -51,12 +52,18 @@ extension Query {
 }
 
 extension QuerySnapshot {
-    fileprivate final class Subscription<SubscriberType: Subscriber>: Combine.Subscription where SubscriberType.Input == QuerySnapshot? {
+    fileprivate final class Subscription<SubscriberType: Subscriber>: Combine.Subscription where SubscriberType.Input == QuerySnapshot, SubscriberType.Failure == Error {
         private var registration: ListenerRegistration?
 
         init(subscriber: SubscriberType, query: Query, includeMetadataChanges: Bool) {
             registration = query.addSnapshotListener (includeMetadataChanges: includeMetadataChanges) { (querySnapshot, error) in
-                _ = subscriber.receive(querySnapshot)
+                if let error = error {
+                    subscriber.receive(completion: .failure(error))
+                } else if let querySnapshot = querySnapshot {
+                    _ = subscriber.receive(querySnapshot)
+                } else {
+                    subscriber.receive(completion: .failure(FirestoreError.nilResultError))
+                }
             }
         }
 

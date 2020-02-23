@@ -2,8 +2,8 @@
   "name": "CombineFirebaseFirestore",
   "version": "0.1.0",
   "summary": "Combine extensions for FirebaseFirestore.",
-  "description": "Combine extensions for FirebaseFirestore.",
-  "homepage": "https://github.com/RxSwiftCommunity/RxFirebase",
+  "description": "Combine extensions for Firebase/Firestore.",
+  "homepage": "https://github.com/rever-ai/CombineFirebase",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -12,13 +12,12 @@
     "kshivang": "shivang.iitk@gmail.com"
   },
   "source": {
-    "git": "https://github.com/rever-ai/CombineFirestore.git",
+    "git": "https://github.com/rever-ai/CombineFirebase.git",
     "tag": "0.1.0"
   },
   "platforms": {
     "ios": "13.0",
     "osx": "10.15",
-    "watchos": "6.0",
     "tvos": "13.0"
   },
   "static_framework": true,

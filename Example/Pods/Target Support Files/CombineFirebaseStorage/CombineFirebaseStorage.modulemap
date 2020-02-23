@@ -1,0 +1,6 @@
+framework module CombineFirebaseStorage {
+  umbrella header "CombineFirebaseStorage-umbrella.h"
+
+  export *
+  module * { export * }
+}

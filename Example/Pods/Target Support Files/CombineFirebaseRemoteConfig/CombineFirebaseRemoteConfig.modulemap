@@ -1,0 +1,6 @@
+framework module CombineFirebaseRemoteConfig {
+  umbrella header "CombineFirebaseRemoteConfig-umbrella.h"
+
+  export *
+  module * { export * }
+}

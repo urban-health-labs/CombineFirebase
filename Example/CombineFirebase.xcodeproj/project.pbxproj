@@ -42,9 +42,9 @@
 		60DF19D5E72F6F170D702D7E /* Pods-CombineFirebase_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineFirebase_Tests.debug.xcconfig"; path = "Target Support Files/Pods-CombineFirebase_Tests/Pods-CombineFirebase_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		69782D6EA86490431382BFBF /* Pods-CombineFirebase_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineFirebase_Example.release.xcconfig"; path = "Target Support Files/Pods-CombineFirebase_Example/Pods-CombineFirebase_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9AB30C5C9693C956AC51FEFB /* Pods_CombineFirebase_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CombineFirebase_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A77615521CF157D3B44347BF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		B18340E4D2F8286D7273558A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		B33A2FE7A7C4C922FC129B88 /* CombineFirebase.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = CombineFirebase.podspec; path = ../CombineFirebase.podspec; sourceTree = "<group>"; };
+		A77615521CF157D3B44347BF /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B18340E4D2F8286D7273558A /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		B33A2FE7A7C4C922FC129B88 /* CombineFirebase.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CombineFirebase.podspec; path = ../CombineFirebase.podspec; sourceTree = "<group>"; };
 		CB394B92E5ECE2BF265727C2 /* Pods-CombineFirebase_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineFirebase_Example.debug.xcconfig"; path = "Target Support Files/Pods-CombineFirebase_Example/Pods-CombineFirebase_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		F928683EBF23C97BBFA8B9AB /* Pods-CombineFirebase_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CombineFirebase_Tests.release.xcconfig"; path = "Target Support Files/Pods-CombineFirebase_Tests/Pods-CombineFirebase_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,7 +77,6 @@
 				60DF19D5E72F6F170D702D7E /* Pods-CombineFirebase_Tests.debug.xcconfig */,
 				F928683EBF23C97BBFA8B9AB /* Pods-CombineFirebase_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -227,6 +226,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -292,7 +292,10 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-CombineFirebase_Example/Pods-CombineFirebase_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/abseil/absl.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
@@ -302,7 +305,10 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/absl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",

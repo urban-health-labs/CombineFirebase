@@ -11,6 +11,10 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+Xcode 11.3
+
+Swift 5.1
+
 ## Installation
 
 CombineFirebase is available through [CocoaPods](https://cocoapods.org). To install
@@ -18,6 +22,11 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'CombineFirebase/Firestore'
+pod 'CombineFirebase/RemoteConfig'
+pod 'CombineFirebase/Database'
+pod 'CombineFirebase/Storage'
+pod 'CombineFirebase/Auth'
+pod 'CombineFirebase/Functions'
 ```
 
 ## Author
