@@ -1,1 +1,1 @@
-@_exported import CombineFirebaseAuth
+@_exported import CombineFirebaseAuthentication
