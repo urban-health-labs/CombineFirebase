@@ -208,7 +208,7 @@ extension Auth {
         }
     }
     
-    var stateDidChangePublisher: AnyPublisher<User?, Never> {
+    public var stateDidChangePublisher: AnyPublisher<User?, Never> {
         StateDidChangePublisher(self)
             .eraseToAnyPublisher()
     }
@@ -256,7 +256,7 @@ extension Auth {
     }
     
     
-    var idTokenDidChangePublisher: AnyPublisher<Auth, Never> {
+    public var idTokenDidChangePublisher: AnyPublisher<Auth, Never> {
         IDTokenDidChangePublisher(self)
             .eraseToAnyPublisher()
     }
