@@ -79,12 +79,12 @@ extension DocumentReference {
         }
     }
     
-    func publisher(includeMetadataChanges : Bool = true) -> AnyPublisher<DocumentSnapshot, Error> {
+    public func publisher(includeMetadataChanges : Bool = true) -> AnyPublisher<DocumentSnapshot, Error> {
         Publisher(self, includeMetadataChanges: includeMetadataChanges)
             .eraseToAnyPublisher()
     }
     
-    func getDocument(source: FirestoreSource = .default) -> AnyPublisher<DocumentSnapshot, Error> {
+    public func getDocument(source: FirestoreSource = .default) -> AnyPublisher<DocumentSnapshot, Error> {
         Future<DocumentSnapshot, Error> { [weak self] promise in
             self?.getDocument(source: source, completion: { (snapshot, error) in
                 if let error = error {

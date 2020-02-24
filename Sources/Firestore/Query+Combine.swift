@@ -31,12 +31,12 @@ extension Query {
     
     }
     
-    func publisher(includeMetadataChanges: Bool = true) -> AnyPublisher<QuerySnapshot, Error> {
+    public func publisher(includeMetadataChanges: Bool = true) -> AnyPublisher<QuerySnapshot, Error> {
         Publisher(self, includeMetadataChanges: includeMetadataChanges)
             .eraseToAnyPublisher()
     }
     
-    func future(source: FirestoreSource = .default) -> AnyPublisher<QuerySnapshot, Error> {
+    public func getDocuments(source: FirestoreSource = .default) -> AnyPublisher<QuerySnapshot, Error> {
         Future<QuerySnapshot, Error> { [weak self] promise in
             self?.getDocuments(source: source, completion: { (snapshot, error) in
                 if let error = error {
