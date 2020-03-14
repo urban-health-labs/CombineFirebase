@@ -1,6 +1,6 @@
 {
   "name": "CombineFirebaseRemoteConfig",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "summary": "Combine extensions for Firebase Remote Config.",
   "description": "Combine extensions for Firebase/RemoteConfig.",
   "homepage": "https://github.com/rever-ai/CombineFirebase",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/rever-ai/CombineFirebase.git",
-    "tag": "0.1.0"
+    "tag": "0.2.1"
   },
   "platforms": {
     "ios": "13.0",

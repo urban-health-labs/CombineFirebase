@@ -7,6 +7,7 @@
 //
 
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 import Combine
 
 extension DocumentReference {
@@ -84,6 +85,19 @@ extension DocumentReference {
             .eraseToAnyPublisher()
     }
     
+    public func publisher<D: Decodable>(includeMetadataChanges: Bool = true, as type: D.Type, documentSnapshotMapper: @escaping (DocumentSnapshot) throws -> D? = DocumentSnapshot.defaultMapper()) -> AnyPublisher<D?, Error> {
+        publisher(includeMetadataChanges: includeMetadataChanges)
+            .map {
+                do {
+                    return try documentSnapshotMapper($0)
+                } catch {
+                    print("Document snapshot mapper error for \(self.path): \(error)")
+                    return nil
+                }
+            }
+            .eraseToAnyPublisher()
+    }
+    
     public func getDocument(source: FirestoreSource = .default) -> AnyPublisher<DocumentSnapshot, Error> {
         Future<DocumentSnapshot, Error> { [weak self] promise in
             self?.getDocument(source: source, completion: { (snapshot, error) in
@@ -96,6 +110,38 @@ extension DocumentReference {
                 }
             })
         }.eraseToAnyPublisher()
+    }
+    
+    public func getDocument<D: Decodable>(source: FirestoreSource = .default, as type: D.Type, documentSnapshotMapper: @escaping (DocumentSnapshot) throws -> D? = DocumentSnapshot.defaultMapper()) -> AnyPublisher<D?, Error> {
+        getDocument(source: source).map {
+            do {
+                return try documentSnapshotMapper($0)
+            } catch {
+                print("error for \(self.path): \(error)")
+               return nil
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    public var cacheFirstGetDocument: AnyPublisher<DocumentSnapshot, Error> {
+        getDocument(source: .cache)
+            .catch { (error) -> AnyPublisher<DocumentSnapshot, Error> in
+                print("error loading from cache for path \(self.path): \(error)")
+                return self.getDocument(source: .server)
+        }.eraseToAnyPublisher()
+    }
+    
+    public func cacheFirstGetDocument<D: Decodable>(as type: D.Type, documentSnapshotMapper: @escaping (DocumentSnapshot) throws -> D? = DocumentSnapshot.defaultMapper()) -> AnyPublisher<D?, Error> {
+        cacheFirstGetDocument.map {
+            do {
+                return try documentSnapshotMapper($0)
+            } catch {
+                print("error for \(self.path): \(error)")
+               return nil
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }
 
@@ -124,5 +170,9 @@ extension DocumentSnapshot {
             registration?.remove()
             registration = nil
         }
+    }
+    
+    public static func defaultMapper<D: Decodable>() -> (DocumentSnapshot) throws -> D? {
+        { try $0.data(as: D.self) }
     }
 }

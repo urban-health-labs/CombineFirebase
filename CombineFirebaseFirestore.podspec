@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'CombineFirebaseFirestore'
-    s.version          = '0.2.1'
+    s.version          = '0.2.3'
     s.summary          = 'Combine extensions for FirebaseFirestore.'
     
     # This description is used to generate tags and improve search results.
@@ -37,6 +37,7 @@ Pod::Spec.new do |s|
     s.swift_version = '5.1'
 
     s.dependency 'Firebase/Firestore'
+    s.dependency 'FirebaseFirestoreSwift'
 
     s.source_files = 'Sources/Firestore/**/*'
 end

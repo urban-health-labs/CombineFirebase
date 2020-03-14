@@ -1,6 +1,6 @@
 {
   "name": "CombineFirebase",
-  "version": "0.1.0",
+  "version": "0.2.2",
   "summary": "Combine extensions for Firebase",
   "description": "Combine extensions for Firebase\nIncluding for now Firestore",
   "homepage": "https://github.com/rever-ai/CombineFirebase",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/rever-ai/CombineFirebase.git",
-    "tag": "0.1.0"
+    "tag": "0.2.2"
   },
   "platforms": {
     "ios": "13.0",
@@ -27,7 +27,7 @@
       "name": "Firestore",
       "dependencies": {
         "CombineFirebaseFirestore": [
-          "~> 0.1"
+          "~> 0.2"
         ]
       },
       "source_files": "Sources/Core/Firestore.swift"
@@ -36,7 +36,7 @@
       "name": "RemoteConfig",
       "dependencies": {
         "CombineFirebaseRemoteConfig": [
-          "~> 0.1"
+          "~> 0.2"
         ]
       },
       "source_files": "Sources/Core/RemoteConfig.swift"
@@ -45,7 +45,7 @@
       "name": "Database",
       "dependencies": {
         "CombineFirebaseDatabase": [
-          "~> 0.1"
+          "~> 0.2"
         ]
       },
       "source_files": "Sources/Core/Database.swift"
@@ -54,7 +54,7 @@
       "name": "Storage",
       "dependencies": {
         "CombineFirebaseStorage": [
-          "~> 0.1"
+          "~> 0.2"
         ]
       },
       "source_files": "Sources/Core/Storage.swift"
@@ -63,7 +63,7 @@
       "name": "Functions",
       "dependencies": {
         "CombineFirebaseFunctions": [
-          "~> 0.1"
+          "~> 0.2"
         ]
       },
       "source_files": "Sources/Core/Functions.swift"
@@ -72,7 +72,7 @@
       "name": "Auth",
       "dependencies": {
         "CombineFirebaseAuthentication": [
-          "~> 0.1"
+          "~> 0.2"
         ]
       },
       "source_files": "Sources/Core/Auth.swift"

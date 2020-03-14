@@ -36,6 +36,12 @@ extension Query {
             .eraseToAnyPublisher()
     }
     
+    public func publisher<D: Decodable>(includeMetadataChanges: Bool = true, as type: D.Type, documentSnapshotMapper: @escaping (DocumentSnapshot) throws -> D? = DocumentSnapshot.defaultMapper(), querySnapshotMapper: @escaping (QuerySnapshot, (DocumentSnapshot) throws -> D?) -> [D] = QuerySnapshot.defaultMapper()) -> AnyPublisher<[D], Error> {
+        publisher(includeMetadataChanges: includeMetadataChanges)
+            .map { querySnapshotMapper($0, documentSnapshotMapper) }
+            .eraseToAnyPublisher()
+    }
+    
     public func getDocuments(source: FirestoreSource = .default) -> AnyPublisher<QuerySnapshot, Error> {
         Future<QuerySnapshot, Error> { [weak self] promise in
             self?.getDocuments(source: source, completion: { (snapshot, error) in
@@ -48,6 +54,12 @@ extension Query {
                 }
             })
         }.eraseToAnyPublisher()
+    }
+    
+    public func getDocuments<D: Decodable>(source: FirestoreSource = .default, as type: D.Type, documentSnapshotMapper: @escaping (DocumentSnapshot) throws -> D? = DocumentSnapshot.defaultMapper(), querySnapshotMapper: @escaping (QuerySnapshot, (DocumentSnapshot) throws -> D?) -> [D] = QuerySnapshot.defaultMapper()) -> AnyPublisher<[D], Error> {
+        getDocuments(source: source)
+            .map { querySnapshotMapper($0, documentSnapshotMapper) }
+            .eraseToAnyPublisher()
     }
 }
 
@@ -75,6 +87,22 @@ extension QuerySnapshot {
         func cancel() {
             registration?.remove()
             registration = nil
+        }
+    }
+    
+    public static func defaultMapper<D: Decodable>() -> (QuerySnapshot, (DocumentSnapshot) throws -> D?) -> [D] {
+    { (snapshot, documentSnapshotMapper) in
+        var dArray: [D] = []
+        snapshot.documents.forEach {
+            do {
+                if let d = try documentSnapshotMapper($0) {
+                    dArray.append(d)
+                }
+            } catch {
+                print("Document snapshot mapper error for \($0.reference.path): \(error)")
+            }
+        }
+        return dArray
         }
     }
 }
