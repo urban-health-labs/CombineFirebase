@@ -29,7 +29,7 @@ extension StorageObservableTask {
         }
     }
     
-    func publisher(_ status: StorageTaskStatus) -> AnyPublisher<StorageTaskSnapshot, Never> {
+    public func publisher(_ status: StorageTaskStatus) -> AnyPublisher<StorageTaskSnapshot, Never> {
         Publisher(self, status: status)
             .eraseToAnyPublisher()
     }
@@ -57,8 +57,6 @@ extension StorageTaskSnapshot {
         
         func request(_ demand: Subscribers.Demand) {
         }
-        
-        
     }
 }
 
