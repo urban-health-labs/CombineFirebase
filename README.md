@@ -425,15 +425,15 @@ let uploadTask = reference.putFile(from: fileURL)
 
 // Listen for state changes
 uploadTask.publisher(.progress)
-    .sink(receiveCompletion: { completion in
-       switch completion {
-       case .finished: print("🏁 finished")
-       case .failure(let error): // Uh-oh, an error occurred! 
-       }
+    .sink(receiveCompletion: { _ in
+       print("🏁 finished")
    }) { snapshot in
+      if let error = snapshot.error {
+         print("error: \(error)")
+      }
       // Upload reported progress
-      let percentComplete = 100.0 * Double(snapshot.progress!.completedUnitCount)
-      / Double(snapshot.progress!.totalUnitCount)
+      let percentComplete = 100.0 * Double(snapshot.progress?.completedUnitCount ?? 0)
+      / Double(snapshot.progress.totalUnitCount ?? 1)
    }
    .store(in: &cancelBag)
 ```
