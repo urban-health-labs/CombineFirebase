@@ -24,6 +24,21 @@ extension DocumentReference {
         }.eraseToAnyPublisher()
     }
     
+    public func setData<T: Encodable>(from data: T, encoder: Firestore.Encoder = Firestore.Encoder()) -> AnyPublisher<Void, Error> {
+        Future<Void, Error> { [weak self] promise in
+            do {
+                try self?.setData(from: data, encoder: encoder) { error in
+                    guard let error = error else {
+                        promise(.success(()))
+                        return
+                    }
+                    promise(.failure(error))
+                }
+            } catch {
+                promise(.failure(error))
+            }
+        }.eraseToAnyPublisher()
+    }
     
     public func setData(_ documentData: [String: Any], merge: Bool) -> AnyPublisher<Void, Error> {
         Future<Void, Error> { [weak self] promise in
@@ -32,6 +47,22 @@ extension DocumentReference {
                     promise(.success(()))
                     return
                 }
+                promise(.failure(error))
+            }
+        }.eraseToAnyPublisher()
+    }
+    
+    public func setData<T: Encodable>(from data: T, merge: Bool, encoder: Firestore.Encoder = Firestore.Encoder()) -> AnyPublisher<Void, Error> {
+        Future<Void, Error> { [weak self] promise in
+            do {
+                try self?.setData(from: data, merge: merge, encoder: encoder) { error in
+                    guard let error = error else {
+                        promise(.success(()))
+                        return
+                    }
+                    promise(.failure(error))
+                }
+            } catch {
                 promise(.failure(error))
             }
         }.eraseToAnyPublisher()

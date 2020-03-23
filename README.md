@@ -163,7 +163,18 @@ var cancelBag = Set<Cancellable>()
 
 let db = Firestore.firestore()
 
-func setSanFranciscoData() {
+struct City: Codable {
+    var name: String? = nil
+    var state: String? = nil
+    var country: String? = nil
+    var capital": String? = nil
+    var population: Int? = nil
+    
+    // local variable 
+    var id: String? = nil
+}
+
+func setSanFranciscoData(city: City) {
     let onErrorCompletion: ((Subscribers.Completion<Error>) -> Void)? = { completion in
         switch completion {
         case .finished: print("🏁 finished")
@@ -178,19 +189,13 @@ func setSanFranciscoData() {
     // Add a new document in collection "cities"
     (db.collection("cities")
         .document("SF")
-        .setData([
-            "name": "San Francisco",
-            "state": "CA",
-            "country": "USA",
-            "capital": false,
-            "population": 860000
-            ]) as AnyPublisher<Void, Error>) // Note: you can use (as Void) for simple setData({})
+        .setData(from: city) as AnyPublisher<Void, Error>) // Note: you can use (as Void) for simple setData({})
             .sink(receiveCompletion: onErrorCompletion, receiveValue: onValue)
             .store(in: &cancelBag)
 }
        
 // Add a new document with a generated id.
-func addSanFranciscoDocument() {
+func addSanFranciscoDocument(city: City) {
     (db.collection("cities")
         .addDocument(data: [
             "name": "San Francisco",
@@ -243,6 +248,23 @@ func getDocument() {
         }
         .store(in: &cancelBag)
 }
+
+
+func getDocumentAsObject() {
+    db.collection("cities")
+        .document("SF")
+        .getDocument(as: City.self)
+        .sink(receiveCompletion: { (completion) in
+               switch completion {
+               case .finished: print("🏁 finished")
+               case .failure(let error): print("❗️ failure: \(error)")
+               }
+           }) { city in
+               print("City: \(city)")
+        }
+        .store(in: &cancelBag)
+}
+
     
 // https://firebase.google.com/docs/firestore/query-data/get-data
 ```
@@ -266,6 +288,30 @@ func listenDocument() {
         }
         .store(in: &cancelBag)
 }
+
+var cityDocumentSnapshotMapper: (DocumentSnapshot) throws -> City? {
+    {
+        var city =  try $0.data(as: City.self)
+        city.id = $0.documentID
+        return city
+    }
+}
+
+func listenDocumentAsObject() {
+    db.collection("cities")
+        .document("SF")
+        .publisher(as: City.self, documentSnapshotMapper: cityDocumentSnapshotMapper)
+        .sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished: print("🏁 finished")
+            case .failure(let error): print("❗️ failure: \(error)")
+            }
+        }) { city in
+            print("City: \(city)")
+        }
+        .store(in: &cancelBag)
+}
+
     
 // Collection
 func listenCollection() {
@@ -277,6 +323,20 @@ func listenCollection() {
             case .failure(let error): print("❗️ failure: \(error)")
             }
         }) { snapshot in
+            print("collection data: \(snapshot.documents)")
+        }.store(in: &cancelBag)
+}
+
+func listenCollectionAsObject() {
+    db.collection("cities")
+        .publisher(as: City.self, documentSnapshotMapper: cityDocumentSnapshotMapper)
+        .sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished: print("🏁 finished")
+            case .failure(let error): print("❗️ failure: \(error)")
+            }
+        }) { cities in
+            print("Cities: \(cities)")
         }.store(in: &cancelBag)
 }
 
