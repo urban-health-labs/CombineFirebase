@@ -167,7 +167,7 @@ struct City: Codable {
     var name: String? = nil
     var state: String? = nil
     var country: String? = nil
-    var capital": String? = nil
+    var capital: String? = nil
     var population: Int? = nil
     
     // local variable 
