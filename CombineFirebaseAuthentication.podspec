@@ -7,7 +7,7 @@
 
 Pod::Spec.new do |s|
     s.name             = 'CombineFirebaseAuthentication'
-    s.version          = '0.2.2'
+    s.version          = '0.2.3'
     s.summary          = 'Combine extensions for Firebase Auth.'
     
     # This description is used to generate tags and improve search results.
@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
     s.swift_version = '5.1'
 
     s.dependency 'Firebase/Auth'
-    s.dependency 'Firebase/Core'
+    s.dependency 'FirebaseCore'
 
     s.source_files = 'Sources/Auth/**/*'
 end
