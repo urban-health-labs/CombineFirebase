@@ -30,7 +30,7 @@ extension RemoteConfig {
                     promise(.failure(error))
                 } else {
                     if activateFetched, result == .success {
-                        self?.activate{_ in}
+                      self?.activate { _, _ in }
                     }
                     promise(.success(result))
                 }
@@ -45,7 +45,7 @@ extension RemoteConfig {
                     promise(.failure(error))
                 } else {
                     if activateFetched, result == .success {
-                        self?.activate{_ in}
+                        self?.activate{ _, _ in }
                     }
                     promise(.success(result))
                 }
@@ -55,7 +55,7 @@ extension RemoteConfig {
     
     public func activate() -> AnyPublisher<Void, Error> {
         Future<Void, Error> { [weak self] promise in
-            self?.activate { error in
+            self?.activate { _, error in
                 if let error = error {
                     promise(.failure(error))
                 } else {
