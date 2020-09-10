@@ -1,4 +1,4 @@
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -23,8 +23,6 @@ let package = Package(
         .target(
             name: "CombineFirebase",
             dependencies: [
-                .product(name: "Firebase", package: "Firebase"),
-                .product(name: "FirebaseCore", package: "Firebase"),
                 .product(name: "FirebaseAuth", package: "Firebase"),
                 .product(name: "FirebaseDatabase", package: "Firebase"),
                 .product(name: "FirebaseFirestore", package: "Firebase"),
