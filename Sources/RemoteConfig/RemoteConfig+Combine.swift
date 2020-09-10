@@ -30,7 +30,7 @@ extension RemoteConfig {
                     promise(.failure(error))
                 } else {
                     if activateFetched, result == .success {
-                      self?.activate { _, _ in }
+                        self?.activate { _, _ in }
                     }
                     promise(.success(result))
                 }
