@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/CombineFirebase.svg?style=flat)](https://cocoapods.org/pods/CombineFirebase)
 [![Platform](https://img.shields.io/cocoapods/p/CombineFirebase.svg?style=flat)](https://cocoapods.org/pods/CombineFirebase)
 
-Handling Firebase asynchronous callbacks with Combine framework.
+Handling [Firebase](https://github.com/firebase/firebase-ios-sdk) asynchronous callbacks with [Combine](https://developer.apple.com/documentation/combine) framework.
 
 ## Example
 
@@ -13,22 +13,14 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-* Xcode 11.3
-* Swift 5.1
-* iOS/tvOS 13.0+, macOS 10.15+
+* Xcode 11.3+ | Swift 5.1+
+* iOS 13.0+ | tvOS 13.0+ | macOS 10.15+
 
 ## Installation
 
-#### Swift Package Manager
-`CombineFirebase` is available through [Swift Package Manager](https://swift.org/package-manager/). To install it, simply add `CombineFirebase` to an existing Xcode project as a package dependency:
-
-1. From the **File** menu, select **Swift Packages > Add Package Dependency...**
-2. Enter https://github.com/rever-ai/CombineFirebase into the package repository URL text field.
-3. Xcode should choose updates package up to the next version option by default.
-
 #### CocoaPods
-`CombineFirebase` is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+
+`CombineFirebase` is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ``` ruby
 pod 'CombineFirebase/Firestore'
@@ -38,6 +30,14 @@ pod 'CombineFirebase/Storage'
 pod 'CombineFirebase/Auth'
 pod 'CombineFirebase/Functions'
 ```
+
+#### Swift Package Manager
+
+`CombineFirebase` is available through [Swift Package Manager](https://swift.org/package-manager/) in beta status. To install it, you must have **Xcode 12.0** and above, simply add `CombineFirebase` to an existing Xcode project as a package dependency:
+
+1. From the **File** menu, select **Swift Packages > Add Package Dependency...**
+2. Enter https://github.com/rever-ai/CombineFirebase into the package repository URL text field.
+3. Xcode should choose updates package up to the next version option by default.
 
 ## Usage
 
@@ -56,7 +56,7 @@ import Combine
 
 ### Database
 
-Basic write operation:
+Basic write operation
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -75,7 +75,7 @@ func setUserData() {
 // https://firebase.google.com/docs/database/ios/read-and-write#basic_write
 ```
 
-Listen for value events:
+Listen for value events
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -95,7 +95,7 @@ func listenForValueEvent() {
 // https://firebase.google.com/docs/database/ios/read-and-write#listen_for_value_events
 ```
 
-Read data once:
+Read data once
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -115,7 +115,7 @@ func readDataOnce() {
 // https://firebase.google.com/docs/database/ios/read-and-write#read_data_once
 ```
 
-Update specific fields:
+Update specific fields
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -135,7 +135,7 @@ func updateFields() {
 // https://firebase.google.com/docs/database/ios/read-and-write#update_specific_fields
 ```
 
-Delete data:
+Delete data
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -153,7 +153,7 @@ func deleteData() {
 // https://firebase.google.com/docs/database/ios/read-and-write#delete_data
 ```
 
-Save data as transactions:
+Save data as transactions
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -173,7 +173,7 @@ func saveDataAsTransaction() {
 
 ### Firestore
 
-Setting data:
+Setting data
 
 ``` swift
 var cancelBag = Set<Cancellable>()
@@ -249,7 +249,7 @@ func updateSanFranciscoDocument() {
 // https://firebase.google.com/docs/firestore/manage-data/add-data
 ```
 
-Get a document:
+Get a document
 
 ``` swift
 func getDocument() {
@@ -285,7 +285,7 @@ func getDocumentAsObject() {
 // https://firebase.google.com/docs/firestore/query-data/get-data
 ```
 
-Get Realtime Updates:
+Get Realtime updates
 
 ``` swift
 let db = Firestore.firestore()
@@ -360,7 +360,7 @@ func listenCollectionAsObject() {
 // https://firebase.google.com/docs/firestore/query-data/listen
 ```
 
-Batched writes:
+Batched writes
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -389,7 +389,7 @@ func batchWrite() {
 // https://firebase.google.com/docs/firestore/manage-data/transactions
 ```
 
-Transactions:
+Transactions
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -431,7 +431,7 @@ func transaction() {
 
 ### RemoteConfig
 
-Fetch:
+Fetch
 
 ``` swift
 // TimeInterval is set to expirationDuration here, indicating the next fetch request will use
@@ -460,7 +460,7 @@ func fetchRemoteConfig() {
 
 ### Storage
 
-Upload:
+Upload
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -494,7 +494,7 @@ let fileURL: URL // Upload file
     .store(in: &cancelBag)
 ```
 
-Observe events:
+Observe events
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -519,7 +519,7 @@ uploadTask.publisher(.progress)
    .store(in: &cancelBag)
 ```
 
-Download:
+Download
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -554,7 +554,7 @@ let localURL = URL(string: "path/to/image")!
     .store(in: &cancelBag)
 ```
 
-URL:
+URL
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -574,7 +574,7 @@ let reference = Storage.storage()
     .store(in: &cancelBag)
 ```
 
-Metadata:
+Metadata
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -609,7 +609,7 @@ let newMetadata = StorageMetadata()
     .store(in: &cancelBag)
 ```
 
-Delete:
+Delete
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -631,7 +631,7 @@ let reference = Storage.storage()
 
 ### Auth
 
-Create:
+Create
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -651,7 +651,7 @@ let auth = Auth.auth()
 // https://firebase.google.com/docs/auth/ios/password-auth
 ```
 
-Sign In:
+Sign in
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -674,7 +674,7 @@ let auth = Auth.auth()
 
 #### User
 
-Update Email:
+Update email
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
@@ -694,7 +694,7 @@ let user = Auth.auth().currentUser
 // https://firebase.google.com/docs/auth/ios/manage-users
 ```
 
-Delete:
+Delete
 
 ``` swift
 var cancelBag = Set<AnyCancellable>()
