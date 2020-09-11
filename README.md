@@ -1,25 +1,28 @@
 # CombineFirebase
 
+[![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-informational)](#swift-package-manager)
 [![Version](https://img.shields.io/cocoapods/v/CombineFirebase.svg?style=flat)](https://cocoapods.org/pods/CombineFirebase)
 [![License](https://img.shields.io/cocoapods/l/CombineFirebase.svg?style=flat)](https://cocoapods.org/pods/CombineFirebase)
 [![Platform](https://img.shields.io/cocoapods/p/CombineFirebase.svg?style=flat)](https://cocoapods.org/pods/CombineFirebase)
 
+Handling [Firebase](https://github.com/firebase/firebase-ios-sdk) asynchronous callbacks with [Combine](https://developer.apple.com/documentation/combine) framework.
+
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo, and run `pod install` from the Example directory first. See [Usage](#Usage) below for more information.
 
 ## Requirements
 
-Xcode 11.3
-
-Swift 5.1
+* Xcode 11.3+ | Swift 5.1+
+* iOS 13.0+ | tvOS 13.0+ | macOS 10.15+
 
 ## Installation
 
-CombineFirebase is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+#### CocoaPods
 
-```ruby
+`CombineFirebase` is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
+
+``` ruby
 pod 'CombineFirebase/Firestore'
 pod 'CombineFirebase/RemoteConfig'
 pod 'CombineFirebase/Database'
@@ -28,25 +31,34 @@ pod 'CombineFirebase/Auth'
 pod 'CombineFirebase/Functions'
 ```
 
+#### Swift Package Manager
+
+`CombineFirebase` is available through [Swift Package Manager](https://swift.org/package-manager/) in beta status. To install it, you must have **Xcode 12.0** and above, simply add `CombineFirebase` to an existing Xcode project as a package dependency:
+
+1. From the **File** menu, select **Swift Packages > Add Package Dependency...**
+2. Enter https://github.com/rever-ai/CombineFirebase into the package repository URL text field.
+3. Xcode should choose updates package up to the next version option by default.
+
 ## Usage
 
-```swift
+``` swift
 import CombineFirebase
 import Firebase
 import Combine
 ```
 
-- [Database](#database)
-- [Firestore](#firestore)
-- [RemoteConfig](#remoteconfig)
-- [Storage](#storage)
-- [Auth](#auth)
-- [Functions](#functions)
+* [Database](#database)
+* [Firestore](#firestore)
+* [RemoteConfig](#remoteconfig)
+* [Storage](#storage)
+* [Auth](#auth)
+* [Functions](#functions)
 
 ### Database
 
-Basic write operation:
-```swift
+Basic write operation
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 func setUserData() {
@@ -60,12 +72,12 @@ func setUserData() {
         }.store(in: &cancelBag)
 }
 
-    
 // https://firebase.google.com/docs/database/ios/read-and-write#basic_write
 ```
 
-Listen for value events:
-```swift
+Listen for value events
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 func listenForValueEvent() {
@@ -83,8 +95,9 @@ func listenForValueEvent() {
 // https://firebase.google.com/docs/database/ios/read-and-write#listen_for_value_events
 ```
 
-Read data once:
-```swift
+Read data once
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 func readDataOnce() {
@@ -102,8 +115,9 @@ func readDataOnce() {
 // https://firebase.google.com/docs/database/ios/read-and-write#read_data_once
 ```
 
-Update specific fields:
-```swift
+Update specific fields
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 func updateFields() {
@@ -121,8 +135,9 @@ func updateFields() {
 // https://firebase.google.com/docs/database/ios/read-and-write#update_specific_fields
 ```
 
-Delete data:
-```swift
+Delete data
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 func deleteData() {
@@ -139,7 +154,8 @@ func deleteData() {
 ```
 
 Save data as transactions
-```swift
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 func saveDataAsTransaction() {
@@ -157,8 +173,9 @@ func saveDataAsTransaction() {
 
 ### Firestore
 
-Setting data:
-```swift
+Setting data
+
+``` swift
 var cancelBag = Set<Cancellable>()
 
 let db = Firestore.firestore()
@@ -232,8 +249,9 @@ func updateSanFranciscoDocument() {
 // https://firebase.google.com/docs/firestore/manage-data/add-data
 ```
 
-Get a document:
-```swift
+Get a document
+
+``` swift
 func getDocument() {
     db.collection("cities")
         .document("SF")
@@ -249,7 +267,6 @@ func getDocument() {
         .store(in: &cancelBag)
 }
 
-
 func getDocumentAsObject() {
     db.collection("cities")
         .document("SF")
@@ -264,13 +281,13 @@ func getDocumentAsObject() {
         }
         .store(in: &cancelBag)
 }
-
     
 // https://firebase.google.com/docs/firestore/query-data/get-data
 ```
 
-Get Realtime Updates:
-```swift
+Get Realtime updates
+
+``` swift
 let db = Firestore.firestore()
 
 // Document
@@ -343,8 +360,9 @@ func listenCollectionAsObject() {
 // https://firebase.google.com/docs/firestore/query-data/listen
 ```
 
-Batched writes:
-```swift
+Batched writes
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 func batchWrite() {
@@ -371,8 +389,9 @@ func batchWrite() {
 // https://firebase.google.com/docs/firestore/manage-data/transactions
 ```
 
-Transactions:
-```swift
+Transactions
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 func transaction() {
@@ -407,13 +426,14 @@ func transaction() {
         .store(in: &cancelBag)
 }
     
-    // https://firebase.google.com/docs/firestore/manage-data/transactions
+// https://firebase.google.com/docs/firestore/manage-data/transactions
 ```
 
 ### RemoteConfig
 
-Fetch:
-```swift
+Fetch
+
+``` swift
 // TimeInterval is set to expirationDuration here, indicating the next fetch request will use
 // data fetched from the Remote Config service, rather than cached parameter values, if cached
 // parameter values are more than expirationDuration seconds old. See Best Practices in the
@@ -435,13 +455,14 @@ func fetchRemoteConfig() {
        .store(in: &cancelBag)
 }
 
-    // https://firebase.google.com/docs/remote-config/ios
+// https://firebase.google.com/docs/remote-config/ios
 ```
 
 ### Storage
 
-Upload:
-```swift
+Upload
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 
 let reference = Storage.storage()
@@ -450,14 +471,14 @@ let reference = Storage.storage()
 let data: Data // Upload data
 (reference.putData(data) as AnyPublisher<StorageMetadata, Error>)
     .sink(receiveCompletion: { completion in
-         switch completion {
-         case .finished: print("🏁 finished")
-         case .failure(let error): // Uh-oh, an error occurred! 
-         }
-     }) { metadata in
+        switch completion {
+        case .finished: print("🏁 finished")
+        case .failure(let error): // Uh-oh, an error occurred! 
+        }
+    }) { metadata in
         // Success         
-     }
-     .store(in: &cancelBag)
+    }
+    .store(in: &cancelBag)
     
 
 let fileURL: URL // Upload file
@@ -471,11 +492,11 @@ let fileURL: URL // Upload file
        // Success         
     }
     .store(in: &cancelBag)
-
 ```
 
-Observe events:
-```swift
+Observe events
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 let reference = Storage.storage()
     .reference(forURL: "\(your_firebase_storage_bucket)/images/space.jpg")
@@ -486,20 +507,21 @@ let uploadTask = reference.putFile(from: fileURL)
 // Listen for state changes
 uploadTask.publisher(.progress)
     .sink(receiveCompletion: { _ in
-       print("🏁 finished")
-   }) { snapshot in
-      if let error = snapshot.error {
-         print("error: \(error)")
-      }
-      // Upload reported progress
-      let percentComplete = 100.0 * Double(snapshot.progress?.completedUnitCount ?? 0)
-      / Double(snapshot.progress.totalUnitCount ?? 1)
+        print("🏁 finished")
+    }) { snapshot in
+        if let error = snapshot.error {
+            print("error: \(error)")
+        }
+        // Upload reported progress
+        let percentComplete = 100.0 * Double(snapshot.progress?.completedUnitCount ?? 0)
+                                    / Double(snapshot.progress.totalUnitCount ?? 1)
    }
    .store(in: &cancelBag)
 ```
 
-Download:
-```swift
+Download
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 let reference = Storage.storage()
     .reference(forURL: "\(your_firebase_storage_bucket)/images/space.jpg")
@@ -515,7 +537,6 @@ let reference = Storage.storage()
        // Data for "images/space.jpg" is returned
     }
     .store(in: &cancelBag)
-    
     
 // Create local filesystem URL
 let localURL = URL(string: "path/to/image")!
@@ -533,8 +554,9 @@ let localURL = URL(string: "path/to/image")!
     .store(in: &cancelBag)
 ```
 
-URL:
-```swift
+URL
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 let reference = Storage.storage()
     .reference(forURL: "\(your_firebase_storage_bucket)/images/space.jpg")
@@ -552,8 +574,9 @@ let reference = Storage.storage()
     .store(in: &cancelBag)
 ```
 
-Metadata:
-```swift
+Metadata
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 let reference = Storage.storage()
     .reference(forURL: "\(your_firebase_storage_bucket)/images/space.jpg")
@@ -586,8 +609,9 @@ let newMetadata = StorageMetadata()
     .store(in: &cancelBag)
 ```
 
-Delete:
-```swift
+Delete
+
+``` swift
 var cancelBag = Set<AnyCancellable>()
 let reference = Storage.storage()
     .reference(forURL: "\(your_firebase_storage_bucket)/images/space.jpg")
@@ -607,92 +631,92 @@ let reference = Storage.storage()
 
 ### Auth
 
-Create:
+Create
 
- ```swift
- var cancelBag = Set<AnyCancellable>()
- let auth = Auth.auth()
-     
- // Create a password-based account
- (auth.createUser(withEmail: "xxx@xxx.com", password: "1q2w3e4r") as AnyPublisher<AuthDataResult, Error>)
-     .sink(receiveCompletion: { completion in
-         switch completion {
-         case .finished: print("🏁 finished")
-         case .failure(let error): // Uh-oh, an error occurred! 
-         }
-     }) { _ in
-         // User signed in
-     }.store(in: &cancelBag)
+``` swift
+var cancelBag = Set<AnyCancellable>()
+let auth = Auth.auth()
+    
+// Create a password-based account
+(auth.createUser(withEmail: "xxx@xxx.com", password: "1q2w3e4r") as AnyPublisher<AuthDataResult, Error>)
+    .sink(receiveCompletion: { completion in
+        switch completion {
+        case .finished: print("🏁 finished")
+        case .failure(let error): // Uh-oh, an error occurred! 
+        }
+    }) { _ in
+        // User signed in
+    }.store(in: &cancelBag)
 
- // https://firebase.google.com/docs/auth/ios/password-auth
- ```
+// https://firebase.google.com/docs/auth/ios/password-auth
+```
 
- Sign In:
+Sign in
 
- ```swift
- var cancelBag = Set<AnyCancellable>()
+``` swift
+var cancelBag = Set<AnyCancellable>()
 
- let auth = Auth.auth()
-     
- // Sign in a user with an email address and password
- (auth.signIn(withEmail: "xxx@xxx.com", password: "1q2w3e4r") as AnyPublisher<AuthDataResult, Error>)
-     .sink(receiveCompletion: { completion in
-         switch completion {
-         case .finished: print("🏁 finished")
-         case .failure(let error): // Uh-oh, an error occurred! 
-         }
-     }) { _ in
-         // User signed in
-     }.store(in: &cancelBag)
+let auth = Auth.auth()
+    
+// Sign in a user with an email address and password
+(auth.signIn(withEmail: "xxx@xxx.com", password: "1q2w3e4r") as AnyPublisher<AuthDataResult, Error>)
+    .sink(receiveCompletion: { completion in
+        switch completion {
+        case .finished: print("🏁 finished")
+        case .failure(let error): // Uh-oh, an error occurred! 
+        }
+    }) { _ in
+        // User signed in
+    }.store(in: &cancelBag)
 
- // https://firebase.google.com/docs/auth/ios/password-auth
- ```
+// https://firebase.google.com/docs/auth/ios/password-auth
+```
 
 #### User
 
- Update Email:
+Update email
 
- ```swift
- var cancelBag = Set<AnyCancellable>()
- let user = Auth.auth().currentUser
-     
- // Set a user's email address
- (user.updateEmail(to: "xxx@xxx.com") as AnyPublisher<Void, Error>)
-     .sink(receiveCompletion: { completion in
-         switch completion {
-         case .finished: print("🏁 finished")
-         case .failure(let error): // Uh-oh, an error occurred! 
-         }
-     }) { _ in
-         // Completed updating Email         
-     }.store(in: &cancelBag)
+``` swift
+var cancelBag = Set<AnyCancellable>()
+let user = Auth.auth().currentUser
+    
+// Set a user's email address
+(user.updateEmail(to: "xxx@xxx.com") as AnyPublisher<Void, Error>)
+    .sink(receiveCompletion: { completion in
+        switch completion {
+        case .finished: print("🏁 finished")
+        case .failure(let error): // Uh-oh, an error occurred! 
+        }
+    }) { _ in
+        // Completed updating Email         
+    }.store(in: &cancelBag)
 
- // https://firebase.google.com/docs/auth/ios/manage-users
- ```
+// https://firebase.google.com/docs/auth/ios/manage-users
+```
 
- Delete:
+Delete
 
- ```swift
+``` swift
 var cancelBag = Set<AnyCancellable>()
 let user = Auth.auth().currentUser
 
- // Delete a user
- (user.delete() as AnyPublisher<Void, Error>)
-     .sink(receiveCompletion: { completion in
-         switch completion {
-         case .finished: print("🏁 finished")
-         case .failure(let error): // Uh-oh, an error occurred! 
-         }
-     }) { _ in
-         // User deleted
-     }.store(in: &cancelBag)
+// Delete a user
+(user.delete() as AnyPublisher<Void, Error>)
+    .sink(receiveCompletion: { completion in
+        switch completion {
+        case .finished: print("🏁 finished")
+        case .failure(let error): // Uh-oh, an error occurred! 
+        }
+    }) { _ in
+        // User deleted
+    }.store(in: &cancelBag)
 
- // https://firebase.google.com/docs/auth/ios/manage-users
- ```
+// https://firebase.google.com/docs/auth/ios/manage-users
+```
 
 ### Functions
 
-```swift
+``` swift
 var cancelBag = Set<AnyCancellable>()
 let functions = Functions.functions()
 let request = functions.httpsCallable("functionName")
@@ -708,9 +732,8 @@ let request = functions.httpsCallable("functionName")
          print("response:\(result)")
     }.store(in: &cancelBag)
     
-    // https://firebase.google.com/docs/functions/callable#call_the_function
+// https://firebase.google.com/docs/functions/callable#call_the_function
 ```
-
 
 ## Author
 
@@ -718,4 +741,4 @@ Kumar Shivang, shivang.iitk@gmail.com
 
 ## License
 
-CombineFirebase is available under the MIT license. See the LICENSE file for more info.
+CombineFirebase is available under the MIT license. See the [LICENSE](LICENSE) file for more info.

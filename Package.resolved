@@ -1,0 +1,79 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "abseil",
+        "repositoryURL": "https://github.com/firebase/abseil-cpp.git",
+        "state": {
+          "branch": null,
+          "revision": "d30bd7751ce343a05fca6413de0dec062163e5e9",
+          "version": null
+        }
+      },
+      {
+        "package": "BoringSSL-GRPC",
+        "repositoryURL": "https://github.com/firebase/boringssl.git",
+        "state": {
+          "branch": null,
+          "revision": "897ffb6fbb5a5ea149216d664ce8b04d77e3df22",
+          "version": null
+        }
+      },
+      {
+        "package": "Firebase",
+        "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
+        "state": {
+          "branch": "6.32-spm-beta",
+          "revision": "08b856762f7301a65836e042eccab0d4c0f93889",
+          "version": null
+        }
+      },
+      {
+        "package": "gRPC",
+        "repositoryURL": "https://github.com/firebase/grpc.git",
+        "state": {
+          "branch": null,
+          "revision": "cae939a8823bbc39912aa2990cf95e29ace381b3",
+          "version": null
+        }
+      },
+      {
+        "package": "GTMSessionFetcher",
+        "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
+        "state": {
+          "branch": null,
+          "revision": "1d4ef59335abfccee6150ca5c9b436c17c801fa9",
+          "version": "1.4.0"
+        }
+      },
+      {
+        "package": "leveldb",
+        "repositoryURL": "https://github.com/firebase/leveldb.git",
+        "state": {
+          "branch": null,
+          "revision": "3f046978ecffd57ea6eb9a0897cc8a3b45b44df8",
+          "version": null
+        }
+      },
+      {
+        "package": "nanopb",
+        "repositoryURL": "https://github.com/nanopb/nanopb.git",
+        "state": {
+          "branch": null,
+          "revision": "3cfa21200eea012d8765239ad4c50d8a36c283f1",
+          "version": null
+        }
+      },
+      {
+        "package": "Promises",
+        "repositoryURL": "https://github.com/google/promises.git",
+        "state": {
+          "branch": null,
+          "revision": "c5cdb6bdc2d3db8ef81e3bc71d55d31baf638837",
+          "version": "1.2.10"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
