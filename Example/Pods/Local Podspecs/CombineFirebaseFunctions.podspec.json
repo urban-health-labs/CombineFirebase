@@ -24,7 +24,7 @@
   "swift_versions": "5.1",
   "dependencies": {
     "Firebase/Functions": [
-
+      "~> 7.0"
     ]
   },
   "source_files": "Sources/Functions/**/*",

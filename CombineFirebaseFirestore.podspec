@@ -37,7 +37,7 @@ Pod::Spec.new do |s|
     s.swift_version = '5.1'
 
     s.dependency 'Firebase/Firestore'
-    s.dependency 'FirebaseFirestoreSwift'
+    s.dependency 'FirebaseFirestoreSwift', '~> 7.3.0-beta'
 
     s.source_files = 'Sources/Firestore/**/*'
 end

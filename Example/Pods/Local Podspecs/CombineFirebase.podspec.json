@@ -1,6 +1,6 @@
 {
   "name": "CombineFirebase",
-  "version": "0.2.2",
+  "version": "0.2.6",
   "summary": "Combine extensions for Firebase",
   "description": "Combine extensions for Firebase\nIncluding for now Firestore",
   "homepage": "https://github.com/rever-ai/CombineFirebase",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/rever-ai/CombineFirebase.git",
-    "tag": "0.2.2"
+    "tag": "0.2.6"
   },
   "platforms": {
     "ios": "13.0",
