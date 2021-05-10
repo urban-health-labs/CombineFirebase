@@ -11,27 +11,90 @@ let package = Package(
             name: "CombineFirebase",
             targets: ["CombineFirebase"]
         ),
+        .library(
+            name: "CombineFirebaseAuth",
+            targets: ["CombineFirebaseAuth"]
+        ),
+        .library(
+            name: "CombineFirebaseDatabase",
+            targets: ["CombineFirebaseDatabase"]
+        ),
+        .library(
+            name: "CombineFirebaseFirestore",
+            targets: ["CombineFirebaseFirestore"]
+        ),
+        .library(
+            name: "CombineFirebaseFunctions",
+            targets: ["CombineFirebaseFunctions"]
+        ),
+        .library(
+            name: "CombineFirebaseRemoteConfig",
+            targets: ["CombineFirebaseRemoteConfig"]
+        ),
+        .library(
+            name: "CombineFirebaseStorage",
+            targets: ["CombineFirebaseStorage"]
+        ),
     ],
     dependencies: [
-        .package(
-            name: "Firebase",
-            url: "https://github.com/firebase/firebase-ios-sdk.git",
-            .branch("6.32-spm-beta")
-        ),
+        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", from: "7.3.1"),
     ],
     targets: [
         .target(
             name: "CombineFirebase",
             dependencies: [
-                .product(name: "FirebaseAuth", package: "Firebase"),
-                .product(name: "FirebaseDatabase", package: "Firebase"),
-                .product(name: "FirebaseFirestore", package: "Firebase"),
-                .product(name: "FirebaseFirestoreSwift", package: "Firebase"),
-                .product(name: "FirebaseFunctions", package: "Firebase"),
-                .product(name: "FirebaseRemoteConfig", package: "Firebase"),
-                .product(name: "FirebaseStorage", package: "Firebase"),
+                "CombineFirebaseAuth",
+                "CombineFirebaseDatabase",
+                "CombineFirebaseFirestore",
+                "CombineFirebaseFunctions",
+                "CombineFirebaseRemoteConfig",
+                "CombineFirebaseStorage",
             ],
-            path: "Sources"
+            path: "Sources/Core"
+        ),
+        .target(
+            name: "CombineFirebaseAuth",
+            dependencies: [
+                .product(name: "FirebaseAuth", package: "Firebase"),
+            ],
+            path: "Sources/Auth"
+        ),
+        .target(
+            name: "CombineFirebaseDatabase",
+            dependencies: [
+                .product(name: "FirebaseDatabase", package: "Firebase"),
+            ],
+            path: "Sources/Database"
+        ),
+        .target(
+            name: "CombineFirebaseFirestore",
+            dependencies: [
+                .product(name: "FirebaseFirestore", package: "Firebase"),
+                .product(name: "FirebaseFirestoreSwift-Beta", package: "Firebase"),
+            ],
+            path: "Sources/Firestore"
+        ),
+        .target(
+            name: "CombineFirebaseFunctions",
+            dependencies: [
+                .product(name: "FirebaseFunctions", package: "Firebase"),
+            ],
+            path: "Sources/Functions"
+        ),
+        .target(
+            name: "CombineFirebaseRemoteConfig",
+            dependencies: [
+                .product(name: "FirebaseRemoteConfig", package: "Firebase"),
+            ],
+            path: "Sources/RemoteConfig"
+        ),
+        .target(
+            name: "CombineFirebaseStorage",
+            dependencies: [
+                .product(name: "FirebaseStorage", package: "Firebase"),
+                .product(name: "FirebaseStorageSwift-Beta", package: "Firebase")
+            ],
+            path: "Sources/Storage"
         )
     ]
 )
