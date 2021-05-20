@@ -46,13 +46,13 @@ Pod::Spec.new do |s|
     remote.source_files = "Sources/Core/RemoteConfig.swift"
   end
 
-  
+
   s.subspec 'Database' do |database|
     database.dependency 'CombineFirebaseDatabase', '~> 0.2'
     database.source_files = "Sources/Core/Database.swift"
   end
-  
-  
+
+
   s.subspec 'Storage' do |storage|
     storage.dependency 'CombineFirebaseStorage', '~> 0.2'
     storage.source_files = "Sources/Core/Storage.swift"
