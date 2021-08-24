@@ -36,7 +36,6 @@ Pod::Spec.new do |s|
     s.swift_version = '5.1'
 
     s.dependency 'Firebase/Auth'
-    s.dependency 'FirebaseCore'
 
     s.source_files = 'Sources/Auth/**/*'
 end
