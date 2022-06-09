@@ -134,7 +134,7 @@ extension DocumentReference {
             self?.getDocument(source: source, completion: { (snapshot, error) in
                 if let error = error {
                     promise(.failure(error))
-                } else if let snapshot = snapshot {
+                } else if let snapshot = snapshot, snapshot.data() != nil {
                     promise(.success(snapshot))
                 } else {
                     promise(.failure(FirestoreError.nilResultError))
