@@ -8,6 +8,7 @@
 
 import Combine
 import FirebaseStorage
+import Foundation
 
 extension StorageReference {
     
