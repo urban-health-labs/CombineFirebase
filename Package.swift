@@ -37,7 +37,7 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", "7.3.1"..<"9.0.0"),
+        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", "7.3.1"..<"11.0.0"),
     ],
     targets: [
         .target(
@@ -70,7 +70,7 @@ let package = Package(
             name: "CombineFirebaseFirestore",
             dependencies: [
                 .product(name: "FirebaseFirestore", package: "Firebase"),
-                .product(name: "FirebaseFirestoreSwift-Beta", package: "Firebase"),
+                .product(name: "FirebaseFirestoreSwift", package: "Firebase"),
             ],
             path: "Sources/Firestore"
         ),
@@ -92,7 +92,6 @@ let package = Package(
             name: "CombineFirebaseStorage",
             dependencies: [
                 .product(name: "FirebaseStorage", package: "Firebase"),
-                .product(name: "FirebaseStorageSwift-Beta", package: "Firebase")
             ],
             path: "Sources/Storage"
         )
