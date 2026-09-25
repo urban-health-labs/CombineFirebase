@@ -7,7 +7,6 @@
 //
 
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 import Combine
 
 extension DocumentReference {

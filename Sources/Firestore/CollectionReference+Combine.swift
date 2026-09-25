@@ -8,7 +8,6 @@
 
 import Combine
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 
 extension CollectionReference {
     
